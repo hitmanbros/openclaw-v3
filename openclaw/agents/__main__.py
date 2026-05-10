@@ -59,6 +59,8 @@ async def main():
         await run_reviewer(llm, system_prompt, workspace_dir, extra_args, config)
     elif agent_name == "tester":
         await run_tester(llm, system_prompt, workspace_dir, extra_args, config)
+    elif agent_name == "security-auditor":
+        await run_security_auditor(llm, system_prompt, workspace_dir, extra_args, config)
     else:
         print(f"Unknown agent: {agent_name}")
         sys.exit(1)
@@ -254,6 +256,42 @@ async def run_tester(llm, system_prompt, workspace_dir, args, config):
         }
     })
     print(f"Tester completed for slice {slice_id}: {'PASS' if passed else 'FAIL'}")
+
+
+async def run_security_auditor(llm, system_prompt, workspace_dir, args, config):
+    """Security-auditor: review slice for security issues."""
+    slice_id = int(args[0]) if args else 1
+    print(f"Security-auditor starting for slice {slice_id}...")
+
+    slices = config.get("plan", {}).get("slices", [])
+    task = next((s for s in slices if s.get("id") == slice_id), None)
+    criteria = task.get("criteria", []) if task else []
+
+    task_message = (
+        f"Security audit for slice {slice_id}.\n"
+        f"Acceptance criteria: {criteria}\n\n"
+        "Use read, grep, and ls tools to inspect the code. "
+        "Return a JSON object with 'pass' (boolean), 'blocking' (list), and 'advisory' (list). "
+        "Be paranoid but precise."
+    )
+
+    loop = AgentLoop(llm, system_prompt, "security-auditor", workspace_dir)
+    result = await loop.run(task_message)
+
+    passed = '"pass": true' in result.lower() or '"pass": true' in result.lower()
+
+    ws = WorkspaceClient(workspace_dir / ".pi" / "workspace.json")
+    ws.update({
+        "plan": {
+            "slices": [
+                {
+                    "id": slice_id,
+                    "audit": {"pass": passed, "findings": result},
+                }
+            ]
+        }
+    })
+    print(f"Security-auditor completed for slice {slice_id}: {'PASS' if passed else 'FAIL'}")
 
 
 if __name__ == "__main__":

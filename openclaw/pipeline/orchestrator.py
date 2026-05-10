@@ -226,6 +226,14 @@ class PipelineOrchestrator:
 
             await asyncio.sleep(20)
 
+            # Security audit for sensitive slices
+            for s in current_slices:
+                if s.get("status") == "in_progress" and s.get("result"):
+                    if self._should_security_audit(s):
+                        await self._send(f"🔒 Slice {s['id']} touches auth/secrets — spawning security audit...")
+                        self.runner.spawn_agent("security-auditor", s["id"])
+            await asyncio.sleep(20)
+
             # Update statuses based on workspace state
             data = self._read_workspace()
             current_slices = data.get("plan", {}).get("slices", [])
@@ -235,14 +243,18 @@ class PipelineOrchestrator:
                     if s.get("result"):
                         review = s.get("review", {})
                         test = s.get("test", {})
-                        if review.get("pass") and test.get("passed"):
+                        audit = s.get("audit", {})
+                        needs_audit = self._should_security_audit(s)
+                        audit_pass = not needs_audit or audit.get("pass", False)
+
+                        if review.get("pass") and test.get("passed") and audit_pass:
                             s["status"] = "done"
                         else:
                             # Retry once
                             if s.get("attempts", 0) < 1:
                                 s["attempts"] = s.get("attempts", 0) + 1
                                 s["status"] = "pending"
-                                await self._send(f"🔄 Slice {s['id']} failed review/test, retrying...")
+                                await self._send(f"🔄 Slice {s['id']} failed review/test/audit, retrying...")
                             else:
                                 s["status"] = "failed"
                                 if self.escalation:
@@ -280,6 +292,20 @@ class PipelineOrchestrator:
             approved = await self._wait_for_approval()
             return approved
         return None
+
+    @staticmethod
+    def _should_security_audit(slice_data):
+        """Check if a slice touches auth, secrets, input parsing, or dependencies."""
+        task = (slice_data.get("task") or "").lower()
+        result = (slice_data.get("result") or "").lower()
+        combined = task + " " + result
+        keywords = [
+            "auth", "secret", "password", "token", "login", "credential",
+            "input", "parse", "validate", "sanitize", "inject",
+            "dependency", "requirements", "package", "npm install", "pip install",
+            "sql", "query", "eval", "exec", "innerhtml", "xss",
+        ]
+        return any(kw in combined for kw in keywords)
 
     async def _run_reviews_and_tests(self, slices):
         """Run final review and test pass for all slices."""
