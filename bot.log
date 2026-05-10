@@ -77,3 +77,194 @@
 10:35:55 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
 10:35:55 [openclaw.matrix] INFO [!GGnkLXZSGwvdXdlnFO:hoomestead.com] @bryan:hoomestead.com: hi
 10:35:55 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:39:42 [openclaw.main] INFO Shutting down...
+10:40:00 [openclaw.main] INFO Using Kimi LLM (kimi-2.6)
+10:40:00 [openclaw.main] INFO Starting bot as @openclaw:hoomestead.com
+10:40:00 [openclaw.main] INFO Token set, device: openclaw-v3
+10:40:01 [openclaw.main] INFO Display name set
+10:40:01 [openclaw.main] INFO Initial sync...
+10:40:01 [nio.client.base_client] INFO New joined room !GGnkLXZSGwvdXdlnFO:hoomestead.com
+10:40:01 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomNameEvent
+10:40:01 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomHistoryVisibilityEvent
+10:40:01 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type PowerLevelsEvent
+10:40:01 [nio.rooms] INFO Changing power level for user @openclaw:hoomestead.com from 0 to 100
+10:40:01 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomJoinRulesEvent
+10:40:01 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomCreateEvent
+10:40:01 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomGuestAccessEvent
+10:40:01 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:40:01 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:40:01 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:40:01 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:40:01 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:40:01 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:40:01 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:40:01 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:40:01 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:40:01 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:40:01 [nio.client.base_client] INFO New joined room !gknPfBvJqpjLoInuIl:hoomestead.com
+10:40:01 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type PowerLevelsEvent
+10:40:01 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomCreateEvent
+10:40:01 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomJoinRulesEvent
+10:40:01 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomHistoryVisibilityEvent
+10:40:01 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomGuestAccessEvent
+10:40:01 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomNameEvent
+10:40:01 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomMessageText
+10:40:01 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomMessageText
+10:40:01 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomMessageText
+10:40:01 [openclaw.main] INFO Initial sync complete — next_batch: s11666_267278_1660_7771_473_2_62_182_0_1_2
+10:40:01 [openclaw.main] INFO Joined room !GGnkLXZSGwvdXdlnFO:hoomestead.com
+10:40:01 [openclaw.main] INFO Joined room !gknPfBvJqpjLoInuIl:hoomestead.com
+10:40:01 [openclaw.main] INFO Starting sync loop
+10:40:01 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomMessageText
+10:40:39 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:40:39 [openclaw.matrix] INFO [!GGnkLXZSGwvdXdlnFO:hoomestead.com] @bryan:hoomestead.com: hi
+10:42:06 [openclaw.main] INFO Shutting down...
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/bryan/openclaw-v3/openclaw/__main__.py", line 31, in <module>
+    main()
+    ~~~~^^
+  File "/home/bryan/openclaw-v3/openclaw/__main__.py", line 25, in main
+    asyncio.run(run_bot(bot))
+    ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/asyncio/runners.py", line 204, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.14/asyncio/runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/home/bryan/openclaw-v3/openclaw/main.py", line 149, in run_bot
+    await sync_task
+  File "/home/bryan/.local/lib/python3.14/site-packages/nio/client/base_client.py", line 116, in wrapper
+    return await func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bryan/.local/lib/python3.14/site-packages/nio/client/async_client.py", line 1388, in sync_forever
+    await self.run_response_callbacks([await response])
+                                       ^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/asyncio/tasks.py", line 618, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "/home/bryan/.local/lib/python3.14/site-packages/nio/client/base_client.py", line 116, in wrapper
+    return await func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bryan/.local/lib/python3.14/site-packages/nio/client/async_client.py", line 1232, in sync
+    response = await self._send(
+               ^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/bryan/.local/lib/python3.14/site-packages/nio/client/async_client.py", line 880, in _send
+    await self.receive_response(resp)
+  File "/home/bryan/.local/lib/python3.14/site-packages/nio/client/async_client.py", line 770, in receive_response
+    await self._handle_sync(response)
+  File "/home/bryan/.local/lib/python3.14/site-packages/nio/client/async_client.py", line 737, in _handle_sync
+    await self._handle_joined_rooms(response)
+  File "/home/bryan/.local/lib/python3.14/site-packages/nio/client/async_client.py", line 635, in _handle_joined_rooms
+    await self._on_event(event, room)
+  File "/home/bryan/.local/lib/python3.14/site-packages/nio/client/async_client.py", line 697, in _on_event
+    await cb.async_execute(event, room)
+  File "/home/bryan/.local/lib/python3.14/site-packages/nio/client/base_client.py", line 160, in async_execute
+    await result
+  File "/home/bryan/openclaw-v3/openclaw/matrix/client.py", line 46, in _on_room_message
+    await self.handle_message(room.room_id, event.sender, body)
+  File "/home/bryan/openclaw-v3/openclaw/matrix/client.py", line 64, in handle_message
+    await self.nexus.handle_message(room_id, sender, body)
+  File "/home/bryan/openclaw-v3/openclaw/nexus.py", line 31, in handle_message
+    try:
+    
+  File "/home/bryan/openclaw-v3/openclaw/llm/client.py", line 37, in chat
+    raise RuntimeError(text)
+RuntimeError: {"error":{"message":"Invalid Authentication","type":"invalid_authentication_error"}}
+10:45:42 [openclaw.main] INFO Using Kimi LLM (kimi-k2.6)
+10:45:42 [openclaw.main] INFO Starting bot as @openclaw:hoomestead.com
+10:45:42 [openclaw.main] INFO Token set, device: openclaw-v3
+10:45:42 [openclaw.main] INFO Display name set
+10:45:42 [openclaw.main] INFO Initial sync...
+10:45:42 [nio.client.base_client] INFO New joined room !GGnkLXZSGwvdXdlnFO:hoomestead.com
+10:45:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomNameEvent
+10:45:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomHistoryVisibilityEvent
+10:45:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type PowerLevelsEvent
+10:45:42 [nio.rooms] INFO Changing power level for user @openclaw:hoomestead.com from 0 to 100
+10:45:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomJoinRulesEvent
+10:45:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomCreateEvent
+10:45:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomGuestAccessEvent
+10:45:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:45:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:45:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:45:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:45:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:45:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:45:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:45:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:45:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:45:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:45:42 [nio.client.base_client] INFO New joined room !gknPfBvJqpjLoInuIl:hoomestead.com
+10:45:42 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type PowerLevelsEvent
+10:45:42 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomCreateEvent
+10:45:42 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomJoinRulesEvent
+10:45:42 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomHistoryVisibilityEvent
+10:45:42 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomGuestAccessEvent
+10:45:42 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomNameEvent
+10:45:42 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomMessageText
+10:45:42 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomMessageText
+10:45:42 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomMessageText
+10:45:42 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomMessageText
+10:45:42 [openclaw.main] INFO Initial sync complete — next_batch: s11668_267330_1664_7774_473_2_62_182_0_1_2
+10:45:43 [openclaw.main] INFO Joined room !GGnkLXZSGwvdXdlnFO:hoomestead.com
+10:45:43 [openclaw.main] INFO Joined room !gknPfBvJqpjLoInuIl:hoomestead.com
+10:45:43 [openclaw.main] INFO Starting sync loop
+10:45:43 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomMessageText
+10:45:49 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:45:49 [openclaw.matrix] INFO [!GGnkLXZSGwvdXdlnFO:hoomestead.com] @bryan:hoomestead.com: hi
+10:45:49 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:46:23 [openclaw.main] INFO Shutting down...
+10:46:42 [openclaw.main] INFO Using Kimi LLM (kimi-k2.6)
+10:46:42 [openclaw.main] INFO Starting bot as @openclaw:hoomestead.com
+10:46:42 [openclaw.main] INFO Token set, device: openclaw-v3
+10:46:42 [openclaw.main] INFO Display name set
+10:46:42 [openclaw.main] INFO Initial sync...
+10:46:42 [nio.client.base_client] INFO New joined room !GGnkLXZSGwvdXdlnFO:hoomestead.com
+10:46:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomNameEvent
+10:46:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomHistoryVisibilityEvent
+10:46:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type PowerLevelsEvent
+10:46:42 [nio.rooms] INFO Changing power level for user @openclaw:hoomestead.com from 0 to 100
+10:46:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomJoinRulesEvent
+10:46:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomCreateEvent
+10:46:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomGuestAccessEvent
+10:46:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:46:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:46:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:46:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:46:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:46:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:46:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:46:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:46:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:46:42 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:46:42 [nio.client.base_client] INFO New joined room !gknPfBvJqpjLoInuIl:hoomestead.com
+10:46:42 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type PowerLevelsEvent
+10:46:42 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomCreateEvent
+10:46:42 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomJoinRulesEvent
+10:46:42 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomHistoryVisibilityEvent
+10:46:42 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomGuestAccessEvent
+10:46:42 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomNameEvent
+10:46:42 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomMessageText
+10:46:42 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomMessageText
+10:46:42 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomMessageText
+10:46:42 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomMessageText
+10:46:42 [openclaw.main] INFO Initial sync complete — next_batch: s11668_267330_1664_7774_473_2_62_182_0_1_2
+10:46:42 [openclaw.main] INFO Joined room !GGnkLXZSGwvdXdlnFO:hoomestead.com
+10:46:43 [openclaw.main] INFO Joined room !gknPfBvJqpjLoInuIl:hoomestead.com
+10:46:43 [openclaw.main] INFO Starting sync loop
+10:46:43 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomMessageText
+10:46:43 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:46:43 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:46:43 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:46:43 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomMessageText
+10:46:46 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:46:46 [openclaw.matrix] INFO [!GGnkLXZSGwvdXdlnFO:hoomestead.com] @bryan:hoomestead.com: hi
+10:46:48 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText

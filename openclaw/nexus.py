@@ -28,12 +28,21 @@ class Nexus:
 
         if command is None:
             if self.llm_client is not None:
-                response = await self.llm_client.chat(body)
-                await self.matrix_client.room_send(
-                    room_id=room_id,
-                    message_type="m.room.message",
-                    content={"body": response, "msgtype": "m.text"},
-                )
+                try:
+                    response = await self.llm_client.chat(
+                        messages=[{"role": "user", "content": body}]
+                    )
+                    await self.matrix_client.room_send(
+                        room_id=room_id,
+                        message_type="m.room.message",
+                        content={"body": response, "msgtype": "m.text"},
+                    )
+                except Exception as exc:
+                    await self.matrix_client.room_send(
+                        room_id=room_id,
+                        message_type="m.room.message",
+                        content={"body": f"LLM error: {exc}", "msgtype": "m.text"},
+                    )
             return
 
         if command.name == "ping":

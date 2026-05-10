@@ -10,15 +10,9 @@ from nio import AsyncClient
 from openclaw.config.loader import ConfigLoader
 from openclaw.matrix.client import MatrixBot
 from openclaw.nexus import Nexus
+from openclaw.llm.client import KimiClient
 
 log = logging.getLogger("openclaw.main")
-
-
-class MockLLMClient:
-    """Simple mock LLM client for chat responses."""
-
-    async def chat(self, message):
-        return "Mock response"
 
 
 def create_bot(config_path):
@@ -28,6 +22,7 @@ def create_bot(config_path):
 
     matrix_config = config["matrix"]
     rooms_config = config["rooms"]
+    llm_config = config.get("llm", {})
 
     bot = MatrixBot(
         homeserver=matrix_config["homeserver"],
@@ -43,7 +38,18 @@ def create_bot(config_path):
         user=matrix_config["user_id"],
     )
 
-    bot.llm_client = MockLLMClient()
+    # Wire real LLM client if API key is available
+    api_key = llm_config.get("api_key", "")
+    if api_key:
+        bot.llm_client = KimiClient(
+            api_key=api_key,
+            model=llm_config.get("model", "kimi-2.6"),
+            base_url=llm_config.get("base_url", "https://api.moonshot.cn/v1"),
+        )
+        log.info("Using Kimi LLM (%s)", llm_config.get("model", "kimi-2.6"))
+    else:
+        log.warning("No LLM API key — natural language chat disabled")
+        bot.llm_client = None
 
     # Flatten defaults and llm settings for runtime config access
     bot.config = {**config.get("defaults", {}), **config.get("llm", {})}

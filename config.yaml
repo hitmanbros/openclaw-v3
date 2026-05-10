@@ -9,8 +9,9 @@ rooms:
 
 llm:
   provider: "kimi"
-  model: "kimi-2.6"
+  model: "kimi-k2.6"
   api_key: "${KIMI_API_KEY}"
+  base_url: "https://api.moonshot.ai/v1"
 
 owner_id: "@bryan:hoomestead.com"
 

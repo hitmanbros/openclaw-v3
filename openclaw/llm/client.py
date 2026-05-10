@@ -2,7 +2,7 @@ import aiohttp
 
 
 class KimiClient:
-    def __init__(self, api_key, model="kimi-2.6", base_url="https://api.moonshot.cn/v1"):
+    def __init__(self, api_key, model="kimi-k2.6", base_url="https://api.moonshot.ai/v1"):
         self.api_key = api_key
         self.model = model
         self.base_url = base_url
@@ -18,7 +18,6 @@ class KimiClient:
         payload = {
             "model": self.model,
             "messages": messages,
-            "temperature": 0.7,
         }
         if tools is not None:
             payload["tools"] = tools
