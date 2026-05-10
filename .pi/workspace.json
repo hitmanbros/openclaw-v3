@@ -1,0 +1,23 @@
+{
+  "plan": {
+    "prd_path": ".pi/plans/openclaw-v3.prd.md",
+    "slices": [
+      {
+        "id": 1,
+        "task": "Implement Matrix command parser (!ping, !plan, !status, !config, etc.)",
+        "criteria": ["Parses all ! commands", "Returns None for natural language", "Handles extra whitespace", "Unknown commands pass through"],
+        "blocked_by": [],
+        "status": "in_progress",
+        "agent": "worker"
+      },
+      {
+        "id": 2,
+        "task": "Implement config validation system",
+        "criteria": ["Validates all config keys", "Rejects sensitive keys", "Type conversion works", "Range checks enforced"],
+        "blocked_by": [1],
+        "status": "pending",
+        "agent": "worker"
+      }
+    ]
+  }
+}
