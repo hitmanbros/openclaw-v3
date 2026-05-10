@@ -268,3 +268,15 @@ RuntimeError: {"error":{"message":"Invalid Authentication","type":"invalid_authe
 10:46:46 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
 10:46:46 [openclaw.matrix] INFO [!GGnkLXZSGwvdXdlnFO:hoomestead.com] @bryan:hoomestead.com: hi
 10:46:48 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:50:46 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:50:46 [openclaw.matrix] INFO [!GGnkLXZSGwvdXdlnFO:hoomestead.com] @bryan:hoomestead.com: what can you do
+10:51:00 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:51:28 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:51:28 [openclaw.matrix] INFO [!GGnkLXZSGwvdXdlnFO:hoomestead.com] @bryan:hoomestead.com: what systme are you working on
+10:51:35 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:51:44 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:51:44 [openclaw.matrix] INFO [!GGnkLXZSGwvdXdlnFO:hoomestead.com] @bryan:hoomestead.com: what backend are you running?
+10:51:48 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:52:17 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:52:17 [openclaw.matrix] INFO [!GGnkLXZSGwvdXdlnFO:hoomestead.com] @bryan:hoomestead.com: what was my last message
+10:52:25 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
