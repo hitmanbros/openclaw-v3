@@ -1,7 +1,13 @@
 """Matrix client bot."""
 
+import logging
+
+from nio import RoomMessageText
+
 from openclaw.matrix.commands import parse_command
 from openclaw.config.validation import validate_config_key, ConfigValidationError
+
+log = logging.getLogger("openclaw.matrix")
 
 
 class MatrixBot:
@@ -18,6 +24,19 @@ class MatrixBot:
         self.llm_client = None
         self.config = {}
         self.nexus = None
+
+    def _register_callbacks(self):
+        """Wire nio event callbacks to handlers."""
+        self.client.add_event_callback(self._on_room_message, RoomMessageText)
+
+    async def _on_room_message(self, room, event):
+        """nio callback for RoomMessageText events."""
+        if event.sender == self.user_id:
+            return  # ignore self
+
+        body = event.body or ""
+        log.info("[%s] %s: %s", room.room_id, event.sender, body[:80])
+        await self.handle_message(room.room_id, event.sender, body)
 
     async def handle_message(self, room_id, sender, body):
         """Handle an incoming message."""
