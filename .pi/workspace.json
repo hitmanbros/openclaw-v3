@@ -2,22 +2,28 @@
   "plan": {
     "prd_path": ".pi/plans/openclaw-v3.prd.md",
     "slices": [
-      {
-        "id": 1,
-        "task": "Implement Matrix command parser (!ping, !plan, !status, !config, etc.)",
-        "criteria": ["Parses all ! commands", "Returns None for natural language", "Handles extra whitespace", "Unknown commands pass through"],
-        "blocked_by": [],
-        "status": "in_progress",
-        "agent": "worker"
-      },
-      {
-        "id": 2,
-        "task": "Implement config validation system",
-        "criteria": ["Validates all config keys", "Rejects sensitive keys", "Type conversion works", "Range checks enforced"],
-        "blocked_by": [1],
-        "status": "pending",
-        "agent": "worker"
-      }
-    ]
+      {"id": 1, "task": "Matrix Bot MVP", "status": "done"},
+      {"id": 2, "task": "Project Room Lifecycle", "status": "done"},
+      {"id": 3, "task": "Subagent IPC + Worker Runner", "status": "done"},
+      {"id": 4, "task": "Tool Registry + Agent Scoping", "status": "done"},
+      {"id": 5, "task": "Scout → Planner Pipeline", "status": "done"},
+      {"id": 6, "task": "Slicer + Orchestrator Dispatch", "status": "done"},
+      {"id": 7, "task": "Real Worker + Reviewer + Tester", "status": "done"},
+      {"id": 8, "task": "GitHub Commit Workflow", "status": "done"},
+      {"id": 9, "task": "HITL + Escalation", "status": "done"},
+      {"id": 10, "task": "Budget Gate", "status": "done"},
+      {"id": 11, "task": "Memory System", "status": "done"},
+      {"id": 12, "task": "Ops Room + Structured Logging", "status": "done"},
+      {"id": 13, "task": "Custom Matrix Events", "status": "done"},
+      {"id": 14, "task": "Pulse Monitor", "status": "done"},
+      {"id": 15, "task": "Deployment", "status": "done"}
+    ],
+    "status": "complete"
+  },
+  "stats": {
+    "total_tests": 164,
+    "tests_passing": 164,
+    "slices_done": 15,
+    "slices_total": 15
   }
 }
