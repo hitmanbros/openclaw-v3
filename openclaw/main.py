@@ -73,9 +73,12 @@ async def run_bot(bot):
         loop.add_signal_handler(sig, _shutdown)
 
     try:
-        log.info("Logging in as %s", bot.user_id)
-        await bot.client.login(bot.access_token)
-        log.info("Login successful")
+        log.info("Starting bot as %s", bot.user_id)
+        # Pre-issued token: set directly, skip login()
+        bot.client.access_token = bot.access_token
+        bot.client.user_id = bot.user_id
+        bot.client.device_id = "openclaw-v3"
+        log.info("Token set, device: %s", bot.client.device_id)
 
         # Set display name via direct HTTP (nio's set_displayname fails on this homeserver)
         try:

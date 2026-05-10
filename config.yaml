@@ -1,0 +1,24 @@
+matrix:
+  homeserver: "https://matrix.hoomestead.com"
+  user_id: "@openclaw:hoomestead.com"
+  access_token: "${MATRIX_TOKEN}"
+
+rooms:
+  main: "!GGnkLXZSGwvdXdlnFO:hoomestead.com"
+  ops: "!gknPfBvJqpjLoInuIl:hoomestead.com"
+
+llm:
+  provider: "kimi"
+  model: "kimi-2.6"
+  api_key: "${KIMI_API_KEY}"
+
+owner_id: "@bryan:hoomestead.com"
+
+defaults:
+  worker_cap: 3
+  daily_input_cap: 3000000
+  hourly_input_cap: 1000000
+
+http:
+  port: 8080
+  host: "127.0.0.1"
