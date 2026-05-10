@@ -17,10 +17,15 @@ class MatrixBot:
         self.client = None
         self.llm_client = None
         self.config = {}
+        self.nexus = None
 
     async def handle_message(self, room_id, sender, body):
         """Handle an incoming message."""
         if sender != self.owner_id:
+            return
+
+        if room_id == self.main_room and self.nexus is not None:
+            await self.nexus.handle_message(room_id, sender, body)
             return
 
         command = parse_command(body)
