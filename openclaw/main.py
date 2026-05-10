@@ -57,6 +57,7 @@ def create_bot(config_path):
         owner_id=config["owner_id"],
         data_dir=config.get("data_dir", "/data/projects"),
     )
+    bot.nexus.llm_client = bot.llm_client
 
     return bot
 

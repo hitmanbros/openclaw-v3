@@ -33,3 +33,47 @@
 10:28:17 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
 10:28:33 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
 10:28:33 [openclaw.matrix] INFO [!GGnkLXZSGwvdXdlnFO:hoomestead.com] @bryan:hoomestead.com: hi
+10:34:02 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:34:02 [openclaw.matrix] INFO [!GGnkLXZSGwvdXdlnFO:hoomestead.com] @bryan:hoomestead.com: !ping
+10:34:02 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:34:04 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:34:04 [openclaw.matrix] INFO [!GGnkLXZSGwvdXdlnFO:hoomestead.com] @bryan:hoomestead.com: hi
+10:35:13 [openclaw.main] INFO Shutting down...
+10:35:36 [openclaw.main] INFO Starting bot as @openclaw:hoomestead.com
+10:35:36 [openclaw.main] INFO Token set, device: openclaw-v3
+10:35:36 [openclaw.main] INFO Display name set
+10:35:36 [openclaw.main] INFO Initial sync...
+10:35:36 [nio.client.base_client] INFO New joined room !GGnkLXZSGwvdXdlnFO:hoomestead.com
+10:35:36 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomNameEvent
+10:35:36 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomHistoryVisibilityEvent
+10:35:36 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type PowerLevelsEvent
+10:35:36 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomJoinRulesEvent
+10:35:36 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomCreateEvent
+10:35:36 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomGuestAccessEvent
+10:35:36 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:35:36 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:35:36 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:35:36 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:35:36 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:35:36 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:35:36 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:35:36 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:35:36 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:35:36 [nio.client.base_client] INFO New joined room !gknPfBvJqpjLoInuIl:hoomestead.com
+10:35:36 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomCreateEvent
+10:35:36 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type PowerLevelsEvent
+10:35:36 [nio.rooms] INFO Changing power level for user @openclaw:hoomestead.com from 0 to 100
+10:35:36 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomJoinRulesEvent
+10:35:36 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomHistoryVisibilityEvent
+10:35:36 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomGuestAccessEvent
+10:35:36 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomNameEvent
+10:35:36 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomMessageText
+10:35:36 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomMessageText
+10:35:36 [openclaw.main] INFO Initial sync complete — next_batch: s11663_267226_1658_7767_473_2_62_182_0_1_2
+10:35:36 [openclaw.main] INFO Joined room !GGnkLXZSGwvdXdlnFO:hoomestead.com
+10:35:37 [openclaw.main] INFO Joined room !gknPfBvJqpjLoInuIl:hoomestead.com
+10:35:37 [openclaw.main] INFO Starting sync loop
+10:35:37 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomMessageText
+10:35:55 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+10:35:55 [openclaw.matrix] INFO [!GGnkLXZSGwvdXdlnFO:hoomestead.com] @bryan:hoomestead.com: hi
+10:35:55 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText

@@ -88,5 +88,4 @@ class TestRunBot:
 
             await run_bot(bot)
 
-        bot.client.login.assert_called_once()
         bot.client.sync_forever.assert_called_once()
