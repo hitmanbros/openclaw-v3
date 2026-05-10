@@ -24,6 +24,7 @@ class KimiClient:
         return payload
 
     async def chat(self, messages, tools=None):
+        """Call the LLM and return the raw message dict (may contain tool_calls)."""
         payload = self._build_payload(messages, tools)
         async with aiohttp.ClientSession() as session:
             async with session.post(
@@ -38,4 +39,9 @@ class KimiClient:
                 if "usage" in data:
                     self.token_tracker["input"] += data["usage"].get("prompt_tokens", 0)
                     self.token_tracker["output"] += data["usage"].get("completion_tokens", 0)
-                return data["choices"][0]["message"]["content"]
+                return data["choices"][0]["message"]
+
+    async def chat_text(self, messages, tools=None):
+        """Call the LLM and return just the content string (convenience for simple chat)."""
+        msg = await self.chat(messages, tools)
+        return msg.get("content", "")

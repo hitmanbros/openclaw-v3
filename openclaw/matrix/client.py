@@ -60,7 +60,7 @@ class MatrixBot:
         if sender != self.owner_id:
             return
 
-        if room_id == self.main_room and self.nexus is not None:
+        if self.nexus is not None:
             await self.nexus.handle_message(room_id, sender, body)
             return
 
@@ -69,7 +69,7 @@ class MatrixBot:
         if command is None:
             if self.llm_client is not None:
                 try:
-                    response = await self.llm_client.chat(
+                    response = await self.llm_client.chat_text(
                         messages=[{"role": "user", "content": body}]
                     )
                     await self.client.room_send(

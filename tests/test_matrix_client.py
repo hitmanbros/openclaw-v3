@@ -73,7 +73,7 @@ class TestMatrixBot:
         bot.client = MagicMock()
         bot.client.room_send = AsyncMock()
         bot.llm_client = MagicMock()
-        bot.llm_client.chat = AsyncMock(return_value="Hello! How can I help?")
+        bot.llm_client.chat_text = AsyncMock(return_value="Hello! How can I help?")
         
         await bot.handle_message(
             room_id="!main123:hoomestead.com",
@@ -81,7 +81,7 @@ class TestMatrixBot:
             body="Hello bot"
         )
         
-        bot.llm_client.chat.assert_called_once()
+        bot.llm_client.chat_text.assert_called_once()
         bot.client.room_send.assert_called_once()
 
     @pytest.mark.asyncio

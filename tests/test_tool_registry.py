@@ -23,25 +23,25 @@ class TestToolRegistry:
     def test_get_tools_for_worker(self, registry):
         """Worker gets read, edit, bash, write_workspace."""
         tools = registry.get_tools_for_agent("worker")
-        names = {t["name"] for t in tools}
+        names = {t["function"]["name"] for t in tools}
         assert names == {"read", "edit", "bash", "write_workspace"}
 
     def test_get_tools_for_scout(self, registry):
         """Scout gets read, grep."""
         tools = registry.get_tools_for_agent("scout")
-        names = {t["name"] for t in tools}
+        names = {t["function"]["name"] for t in tools}
         assert names == {"read", "grep"}
 
     def test_get_tools_for_reviewer(self, registry):
         """Reviewer gets read, grep."""
         tools = registry.get_tools_for_agent("reviewer")
-        names = {t["name"] for t in tools}
+        names = {t["function"]["name"] for t in tools}
         assert names == {"read", "grep"}
 
     def test_get_tools_for_orchestrator(self, registry):
         """Orchestrator gets write_workspace."""
         tools = registry.get_tools_for_agent("orchestrator")
-        names = {t["name"] for t in tools}
+        names = {t["function"]["name"] for t in tools}
         assert names == {"write_workspace"}
 
     def test_unknown_agent_gets_no_tools(self, registry):
@@ -52,9 +52,9 @@ class TestToolRegistry:
     def test_tool_schema_includes_description(self, registry):
         """Tool schemas include description and parameters."""
         tools = registry.get_tools_for_agent("worker")
-        read_tool = next(t for t in tools if t["name"] == "read")
-        assert "description" in read_tool
-        assert "parameters" in read_tool
+        read_tool = next(t for t in tools if t["function"]["name"] == "read")
+        assert "description" in read_tool["function"]
+        assert "parameters" in read_tool["function"]
 
     def test_execute_routes_to_correct_tool(self, registry):
         """execute calls the registered function for the tool."""

@@ -131,17 +131,19 @@ class TestPipelineOrchestrator:
             workspace_dir=temp_project,
             matrix_client=matrix_client,
             room_id="!project:example.com",
+            owner_id="@owner:example.com",
         )
 
     @pytest.mark.asyncio
     async def test_run_scout_phase(self, orch, temp_project):
         """Orchestrator runs scout and posts report summary."""
         with patch.object(orch, "_run_scout", return_value="Found 5 files"):
-            await orch.run_phase("scout")
-            
-            orch.matrix_client.room_send.assert_called()
-            call_body = orch.matrix_client.room_send.call_args.kwargs["content"]["body"]
-            assert "Found 5 files" in call_body
+            with patch.object(orch, "_wait_for_agent"):
+                await orch.run_phase("scout")
+                
+                orch.matrix_client.room_send.assert_called()
+                call_body = orch.matrix_client.room_send.call_args.kwargs["content"]["body"]
+                assert "Found 5 files" in call_body
 
     @pytest.mark.asyncio
     async def test_run_planner_phase(self, orch, temp_project):
@@ -151,9 +153,11 @@ class TestPipelineOrchestrator:
         prd_path.write_text("# PRD\n\n## Goals\nBuild app.")
         
         with patch.object(orch, "_run_planner", return_value=prd_path):
-            await orch.run_phase("planner")
-            
-            orch.matrix_client.room_send.assert_called()
+            with patch.object(orch, "_wait_for_agent"):
+                with patch.object(orch, "_wait_for_approval", return_value=True):
+                    await orch.run_phase("planner")
+                    
+                    orch.matrix_client.room_send.assert_called()
 
     @pytest.mark.asyncio
     async def test_planner_hitl_gate(self, orch, temp_project):
@@ -163,9 +167,10 @@ class TestPipelineOrchestrator:
         prd_path.write_text("# PRD")
         
         with patch.object(orch, "_run_planner", return_value=prd_path):
-            with patch.object(orch, "_wait_for_approval", return_value=True):
-                result = await orch.run_phase("planner")
-                assert result is True
+            with patch.object(orch, "_wait_for_agent"):
+                with patch.object(orch, "_wait_for_approval", return_value=True):
+                    result = await orch.run_phase("planner")
+                    assert result is True
 
     @pytest.mark.asyncio
     async def test_hitl_rejection_stops_pipeline(self, orch, temp_project):
@@ -175,6 +180,7 @@ class TestPipelineOrchestrator:
         prd_path.write_text("# PRD")
         
         with patch.object(orch, "_run_planner", return_value=prd_path):
-            with patch.object(orch, "_wait_for_approval", return_value=False):
-                result = await orch.run_phase("planner")
-                assert result is False
+            with patch.object(orch, "_wait_for_agent"):
+                with patch.object(orch, "_wait_for_approval", return_value=False):
+                    result = await orch.run_phase("planner")
+                    assert result is False

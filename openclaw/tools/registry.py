@@ -8,19 +8,26 @@ class ToolRegistry:
     def __init__(self):
         self._tools: dict[str, dict[str, Any]] = {}
 
-    def register(self, name: str, fn: Callable, agents: Set[str]):
+    def register(
+        self,
+        name: str,
+        fn: Callable,
+        agents: Set[str],
+        description: str = "",
+        parameters: dict | None = None,
+    ):
         """Register a tool with metadata and allowed agent set."""
-        description = ""
-        parameters = {"type": "object", "properties": {}}
-        try:
-            sig = inspect.signature(fn)
-            for param_name, param in sig.parameters.items():
-                param_schema = {"type": "string"}
-                if param.default is not inspect.Parameter.empty:
-                    param_schema["default"] = param.default
-                parameters["properties"][param_name] = param_schema
-        except (ValueError, TypeError):
-            pass
+        if parameters is None:
+            parameters = {"type": "object", "properties": {}}
+            try:
+                sig = inspect.signature(fn)
+                for param_name, param in sig.parameters.items():
+                    param_schema = {"type": "string"}
+                    if param.default is not inspect.Parameter.empty:
+                        param_schema["default"] = param.default
+                    parameters["properties"][param_name] = param_schema
+            except (ValueError, TypeError):
+                pass
         self._tools[name] = {
             "fn": fn,
             "agents": agents,
@@ -34,9 +41,12 @@ class ToolRegistry:
         for name, meta in self._tools.items():
             if agent_name in meta["agents"]:
                 tools.append({
-                    "name": name,
-                    "description": meta["description"],
-                    "parameters": meta["parameters"],
+                    "type": "function",
+                    "function": {
+                        "name": name,
+                        "description": meta["description"],
+                        "parameters": meta["parameters"],
+                    },
                 })
         return tools
 

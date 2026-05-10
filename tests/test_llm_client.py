@@ -32,7 +32,7 @@ class TestKimiClient:
             mock_post.return_value.__aexit__ = AsyncMock(return_value=False)
             
             result = await client.chat(messages=[{"role": "user", "content": "Hi"}])
-            assert result == "Hello!"
+            assert result == {"content": "Hello!"}
             mock_post.assert_called_once()
 
     @pytest.mark.asyncio

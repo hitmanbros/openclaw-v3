@@ -48,4 +48,6 @@ class Dispatcher:
             ])
 
     async def _spawn_worker(self, slice, workspace_dir):
-        raise NotImplementedError("Worker spawning not implemented")
+        from openclaw.subagent.runner import SubagentRunner
+        runner = SubagentRunner(workspace_dir)
+        runner.spawn_agent("worker", slice["id"])

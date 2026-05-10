@@ -89,7 +89,7 @@ class TestNexusIntegration:
     async def test_natural_language_chat(self, nexus):
         """Natural language in main room gets LLM response."""
         nexus.llm_client = MagicMock()
-        nexus.llm_client.chat = AsyncMock(return_value="Hello! How can I help?")
+        nexus.llm_client.chat_text = AsyncMock(return_value="Hello! How can I help?")
 
         await nexus.handle_message(
             room_id="!main:example.com",
@@ -97,7 +97,7 @@ class TestNexusIntegration:
             body="What can you do?"
         )
 
-        nexus.llm_client.chat.assert_called_once()
+        nexus.llm_client.chat_text.assert_called_once()
         nexus.matrix_client.room_send.assert_called()
 
 
