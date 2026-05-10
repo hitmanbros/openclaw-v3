@@ -1,8 +1,9 @@
 """Matrix client bot."""
 
 import logging
+import time
 
-from nio import RoomMessageText
+from nio import RoomMessageText, InviteMemberEvent
 
 from openclaw.matrix.commands import parse_command
 from openclaw.config.validation import validate_config_key, ConfigValidationError
@@ -24,19 +25,35 @@ class MatrixBot:
         self.llm_client = None
         self.config = {}
         self.nexus = None
+        self._startup_ts_ms = int(time.time() * 1000)
 
     def _register_callbacks(self):
         """Wire nio event callbacks to handlers."""
         self.client.add_event_callback(self._on_room_message, RoomMessageText)
+        self.client.add_event_callback(self._on_invite, InviteMemberEvent)
 
     async def _on_room_message(self, room, event):
         """nio callback for RoomMessageText events."""
         if event.sender == self.user_id:
             return  # ignore self
 
+        # Ignore events older than process start (replayed on reconnect)
+        if hasattr(event, "server_timestamp") and event.server_timestamp < self._startup_ts_ms:
+            return
+
         body = event.body or ""
         log.info("[%s] %s: %s", room.room_id, event.sender, body[:80])
         await self.handle_message(room.room_id, event.sender, body)
+
+    async def _on_invite(self, room, event):
+        """Auto-join rooms we're invited to."""
+        if event.sender == self.user_id:
+            return
+        log.info("Invited to %s by %s — joining", room.room_id, event.sender)
+        try:
+            await self.client.join(room.room_id)
+        except Exception as exc:
+            log.warning("Failed to join %s: %s", room.room_id, exc)
 
     async def handle_message(self, room_id, sender, body):
         """Handle an incoming message."""

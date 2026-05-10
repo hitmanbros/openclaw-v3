@@ -68,6 +68,7 @@ class TestRunBot:
         bot = MagicMock()
         bot.client = MagicMock()
         bot.client.login = AsyncMock()
+        bot.client.sync = AsyncMock()
         bot.client.sync_forever = AsyncMock()
         bot.client.close = AsyncMock()
         bot.client.join = AsyncMock()

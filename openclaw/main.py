@@ -4,6 +4,7 @@ import asyncio
 import logging
 import signal
 
+import aiohttp
 from nio import AsyncClient
 
 from openclaw.config.loader import ConfigLoader
@@ -76,14 +77,36 @@ async def run_bot(bot):
         await bot.client.login(bot.access_token)
         log.info("Login successful")
 
-        # Register message callbacks before syncing
+        # Set display name via direct HTTP (nio's set_displayname fails on this homeserver)
+        try:
+            async with aiohttp.ClientSession() as session:
+                url = f"{bot.homeserver}/_matrix/client/v3/profile/{bot.user_id}/displayname"
+                async with session.put(
+                    url,
+                    headers={"Authorization": f"Bearer {bot.access_token}"},
+                    json={"displayname": "OpenClaw"},
+                ) as resp:
+                    if resp.status == 200:
+                        log.info("Display name set")
+                    else:
+                        body = await resp.text()
+                        log.warning("Display name set failed: %s %s", resp.status, body)
+        except Exception as exc:
+            log.warning("Display name set error: %s", exc)
+
+        # Initial sync to establish baseline state
+        log.info("Initial sync...")
+        await bot.client.sync(timeout=10000, full_state=True)
+        log.info("Initial sync complete — next_batch: %s", bot.client.next_batch)
+
+        # Register message callbacks
         bot._register_callbacks()
 
         # Join configured rooms
         for room in (bot.main_room, bot.ops_room):
             if room:
                 try:
-                    result = await bot.client.join(room)
+                    await bot.client.join(room)
                     log.info("Joined room %s", room)
                 except Exception as exc:
                     log.warning("Could not join room %s: %s", room, exc)
@@ -103,7 +126,9 @@ async def run_bot(bot):
                 log.warning("Could not post to ops room: %s", exc)
 
         log.info("Starting sync loop")
-        sync_task = asyncio.create_task(bot.client.sync_forever())
+        sync_task = asyncio.create_task(
+            bot.client.sync_forever(timeout=30000, set_presence="online")
+        )
 
         try:
             await shutdown_event.wait()
