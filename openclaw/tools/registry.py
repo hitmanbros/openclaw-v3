@@ -40,6 +40,10 @@ class ToolRegistry:
                 })
         return tools
 
+    def restrict_to(self, names: Set[str]):
+        """Remove all tools not in the given set of names."""
+        self._tools = {k: v for k, v in self._tools.items() if k in names}
+
     def execute(self, name: str, kwargs: dict[str, Any]) -> Any:
         """Call the registered function with kwargs."""
         if name not in self._tools:
