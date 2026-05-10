@@ -281,3 +281,16 @@ RuntimeError: {"error":{"message":"Invalid Authentication","type":"invalid_authe
 10:52:17 [openclaw.matrix] INFO [!GGnkLXZSGwvdXdlnFO:hoomestead.com] @bryan:hoomestead.com: what was my last message
 10:52:25 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
 11:06:46 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomMessageText
+11:07:47 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+11:07:47 [openclaw.matrix] INFO [!GGnkLXZSGwvdXdlnFO:hoomestead.com] @bryan:hoomestead.com: !ping
+11:07:48 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+11:07:48 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+11:07:50 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+11:07:50 [openclaw.matrix] INFO [!GGnkLXZSGwvdXdlnFO:hoomestead.com] @bryan:hoomestead.com: hey
+11:07:52 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+11:07:53 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+11:07:53 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+11:07:53 [openclaw.matrix] INFO [!GGnkLXZSGwvdXdlnFO:hoomestead.com] @bryan:hoomestead.com: !ping
+11:07:53 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+11:07:53 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+11:08:35 [openclaw.main] INFO Shutting down...
