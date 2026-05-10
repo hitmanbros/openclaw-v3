@@ -48,6 +48,13 @@ A minimal HTTP status endpoint (`/health`, `/status`) runs alongside for monitor
 28. As the owner, I want the orchestrator to dispatch the entire ready-set of slices in parallel (up to a per-project cap), so that independent work happens concurrently without manual scheduling.
 29. As the owner, I want the bot to run entirely headless (no TUI), so that I interact only through Matrix rooms on any device.
 30. As the owner, I want auth via environment variables with `.env` files kept locally and on the VPS, so that secrets are injectable and not hardcoded.
+31. As the owner, I want to change configuration values (caps, limits, model settings) via Matrix commands without restarting the bot, so that I can tune behavior on the fly.
+32. As the owner, I want per-project config overrides (worker cap, budget limits, model choice) that take effect immediately, so that different projects can have different resource policies.
+33. As the owner, I want config changes validated before applying, so that a typo in a command doesn't break the bot.
+34. As the owner, I want a `!config` command to view and modify settings in real-time, so that I don't need SSH access to tweak behavior.
+35. As the owner, I want config defaults documented and easily discoverable via `!config help`, so that I know what knobs are available without reading source code.
+36. As the owner, I want configuration persisted to disk automatically when changed via command, so that changes survive bot restarts.
+37. As the owner, I want sensitive config values (API keys, tokens) hidden from `!config` output, so that they don't leak in Matrix room history.
 
 ## Implementation Decisions
 

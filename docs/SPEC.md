@@ -613,6 +613,18 @@ Owner can use `!plan alpha` instead of full URL.
 
 ## 11. Configuration
 
+### 11.0 Config Philosophy
+
+Configuration must be **easy to change, validate, and persist** without restarting the bot. All tunable parameters should be discoverable and modifiable via Matrix commands. Sensitive values are protected from accidental exposure.
+
+**Design principles:**
+- **Two-layer config:** Static (`config.yaml`) for bootstrap values + dynamic (workspace JSON) for runtime overrides.
+- **Hot-reload:** Dynamic config changes apply immediately to new agent spawns; existing agents finish with their current values.
+- **Validation:** Every config change is validated before application. Invalid values are rejected with an error message.
+- **Persistence:** Dynamic changes auto-save to disk within 5 seconds.
+- **Discoverability:** `!config` shows all available keys, current values, and default values.
+- **Security:** Sensitive keys (`api_key`, `token`, `password`) are masked in output (`ghp_********`).
+
 ### 11.1 Static Config (config.yaml)
 
 ```yaml
@@ -651,13 +663,143 @@ http:
   host: "127.0.0.1"
 ```
 
+### 11.1a Static Config Reload
+
+Static config is read once at startup. To change static values (Matrix creds, API endpoints), restart the bot. These are intentionally stable.
+
 ### 11.2 Dynamic Config (workspace.json per project)
 
-Created at project start, mutable at runtime:
-- Budget counters
-- Slice statuses
-- Worker results
-- Approval overrides
+Created at project start, mutable at runtime. Dynamic config lives in `workspace.json` under the `config` key and can be changed without restart.
+
+```json
+{
+  "config": {
+    "worker_cap": 3,
+    "daily_input_cap": 3000000,
+    "hourly_input_cap": 1000000,
+    "model": "kimi-2.6",
+    "max_turns": 50,
+    "bash_timeout": 30,
+    "snapshot_keep": 5,
+    "pulse_interval_sec": 300,
+    "escalation_timeout_sec": 3600,
+    "hitl_timeout_sec": 3600,
+    "auto_approve_prd": false,
+    "commit_message_template": "phase-{phase}: {summary}"
+  }
+}
+```
+
+**Dynamic config keys:**
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `worker_cap` | int | 3 | Max parallel workers |
+| `daily_input_cap` | int | 3000000 | Daily token ceiling |
+| `hourly_input_cap` | int | 1000000 | Hourly token ceiling |
+| `model` | string | "kimi-2.6" | LLM model for all agents |
+| `max_turns` | int | 50 | Max conversation turns per agent |
+| `bash_timeout` | int | 30 | Bash command timeout (seconds) |
+| `snapshot_keep` | int | 5 | Number of snapshots to retain |
+| `pulse_interval_sec` | int | 300 | Log scan interval |
+| `escalation_timeout_sec` | int | 3600 | Time before escalating blocked projects |
+| `hitl_timeout_sec` | int | 3600 | Time before auto-rejecting HITL gates |
+| `auto_approve_prd` | bool | false | Skip PRD approval gate (dangerous) |
+| `commit_message_template` | string | "phase-{phase}: {summary}" | Squash commit message template |
+
+### 11.2b Config Commands
+
+| Command | Args | Room | Action |
+|---------|------|------|--------|
+| `!config` | — | any | Show all config keys, values, defaults |
+| `!config get` | `<key>` | any | Show value for one key |
+| `!config set` | `<key> <value>` | main/project | Set key to value (validated) |
+| `!config reset` | `<key>` | main/project | Reset key to default |
+| `!config help` | — | any | Show config key descriptions |
+
+**Examples:**
+```
+!config set worker_cap 5
+!config set daily_input_cap 5000000
+!config set bash_timeout 60
+!config get worker_cap
+!config reset worker_cap
+```
+
+### 11.2c Validation Rules
+
+- `worker_cap`: integer, 1–10
+- `daily_input_cap`: integer, >= 100000
+- `hourly_input_cap`: integer, >= 10000
+- `model`: string, must be in allowed models list (`kimi-2.6`, `kimi-2.5`, etc.)
+- `bash_timeout`: integer, 5–300
+- `snapshot_keep`: integer, 1–20
+- `pulse_interval_sec`: integer, 60–3600
+- `escalation_timeout_sec`: integer, 300–86400
+- `hitl_timeout_sec`: integer, 300–86400
+- `auto_approve_prd`: boolean
+
+**Validation flow:**
+1. Owner sends `!config set worker_cap 15`
+2. Bot validates: 15 > 10 → **rejected**
+3. Bot replies: `❌ worker_cap must be between 1 and 10 (got 15)`
+4. Owner sends `!config set worker_cap 5`
+5. Bot validates: 5 in range → **accepted**
+6. Bot replies: `✅ worker_cap set to 5 (was 3)`
+7. Bot writes new value to workspace.json
+8. Next worker spawn uses cap=5
+
+### 11.2d Scope Hierarchy
+
+Config is resolved in this order (first match wins):
+
+1. **Project room config** (`workspace.json` in project directory)
+2. **Main room config** (`workspace.json` in main room directory)
+3. **Static config** (`config.yaml` defaults)
+
+Example:
+- Static: `worker_cap = 3`
+- Main room: `worker_cap = 5`
+- Project Alpha: `worker_cap = 2`
+- Project Beta: (no override)
+
+Result:
+- Alpha uses 2 workers
+- Beta uses 5 workers (inherits from main)
+- New project uses 5 workers (inherits from main)
+
+### 11.2e Sensitive Key Masking
+
+The following keys are masked in `!config` output:
+
+```python
+SENSITIVE_KEYS = {
+    "matrix.access_token",
+    "llm.api_key",
+    "github.token",
+    "github.webhook_secret",
+}
+```
+
+Display: `github.token = ghp_********`
+
+Sensitive keys can only be set via environment variables or by editing `config.yaml` directly (requires restart). They cannot be changed via `!config set`.
+
+### 11.2f Config Persistence
+
+- Dynamic changes are written to `workspace.json` within 5 seconds
+- Auto-save on every `!config set`
+- Writes use atomic rename (`tmp.json` → `workspace.json`) to prevent corruption
+- On startup: read static config → overlay dynamic config → resolve final values
+
+### 11.2g Config Audit Trail
+
+Config changes are logged:
+```json
+{"timestamp":"2024-05-09T12:34:56Z","event":"config_change","key":"worker_cap","old_value":3,"new_value":5,"changed_by":"@bryan:hoomestead.com","room":"!alpha:matrix.org"}
+```
+
+This audit trail is in `events.jsonl` and can be reviewed with `!config log`.
 
 ### 11.3 Environment Variables
 
