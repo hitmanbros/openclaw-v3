@@ -280,3 +280,4 @@ RuntimeError: {"error":{"message":"Invalid Authentication","type":"invalid_authe
 10:52:17 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
 10:52:17 [openclaw.matrix] INFO [!GGnkLXZSGwvdXdlnFO:hoomestead.com] @bryan:hoomestead.com: what was my last message
 10:52:25 [nio.rooms] INFO Room !GGnkLXZSGwvdXdlnFO:hoomestead.com handling event of type RoomMessageText
+11:06:46 [nio.rooms] INFO Room !gknPfBvJqpjLoInuIl:hoomestead.com handling event of type RoomMessageText
